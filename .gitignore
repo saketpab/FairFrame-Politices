@@ -8,3 +8,6 @@ env/
 # Environment files
 .env
 .env.*
+
+#Saket's personal notes
+selfNotes.txt
