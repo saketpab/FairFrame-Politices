@@ -1,7 +1,6 @@
 from django.urls import path
-from .views import main #the dot is for current directory
+from .views import ArticleView #the dot is for current directory
 
 urlpatterns = [
-    path('',main ) #if the path is nothing, go to api.urls
-    #it then calls main function thazt we just imported
+    path('home',ArticleView.as_view() ) #if the path is nothing, go to api.urls
 ]
