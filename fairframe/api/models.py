@@ -4,6 +4,7 @@ from django.db import models
 
 #news articles that will be stores in the database    
 
+#basically a database but in python"""
 class Article(models.Model):
     #default varaible is the default value when the model is created
     title = models.CharField(max_length = 50, default = "", unique = True)
