@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'api.apps.ApiConfig',#api is name of the file, app is the fiel name, and ApiConfig is like a function in the file
+    'articles.apps.ArticlesConfig',#api is name of the file, app is the fiel name, and ApiConfig is like a function in the file
     'rest_framework'
 ]
 
