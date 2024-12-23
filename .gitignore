@@ -12,4 +12,6 @@ env/
 #Saket's personal notes
 notes.txt
 
-
+#ignoring bytecode files
+*.pyc
+__pycache__/
