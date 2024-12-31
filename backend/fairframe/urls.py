@@ -19,5 +19,5 @@ from django.urls import path,include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api', include('articles.urls')) #the include function makes it so that this url will automatically take u to articles.urls
+    path('api/', include('articles.urls')) #the include function makes it so that this url will automatically take u to articles.urls
 ]
