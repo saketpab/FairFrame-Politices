@@ -7,10 +7,11 @@ from django.db import models
 #basically a database but in python"""
 class Article(models.Model):
     #default varaible is the default value when the model is created
-    title = models.CharField(max_length = 50, default = "", unique = True)
+    title = models.CharField(max_length = 50, default = "", unique = True, primary_key = True)
     source = models.CharField(max_length = 50, default = "")
 
     categories = [("Dem", "Democrat"), ('Reb', 'Republican'), ('','')]
     political_affiliation = models.CharField(max_length = 3,choices = categories, default = '')
+    url = models.URLField(default = "")
 
     posted_at = models.DateTimeField(auto_now_add=True)

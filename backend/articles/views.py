@@ -26,8 +26,10 @@ def getData(request):
         'language': 'en',
         'sortBy': 'publishedAt',
         'sources': 'abc-news, bbc-news, bloomberg, cbs-news, cnn, fox-news, the-guardian-uk, the-new-york-times, the-wall-street-journal, the-washington-post ',
-        'apiKey': '0aa3b7bdcc1a48539459855d93e33115'
-        
+        'apiKey': '0aa3b7bdcc1a48539459855d93e33115',
+        'page': 1,
+        'pageSize': 60
+
 
     }
 
