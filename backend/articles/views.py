@@ -3,6 +3,8 @@ from rest_framework.decorators import api_view
 from .serializers import ArticleSerializer
 from rest_framework import status
 import requests
+from .get_articles import updateArticles
+from .models import Article
 
 # Create your views here.
 #there is where all the api endpoints go
@@ -15,31 +17,16 @@ import requests
 @api_view(['GET'])
 def getData(request):
 
-
-
-    url = 'https://newsapi.org/v2/everything'
-    params = {
-        
-        'q' : 'republican OR democrat OR trump OR biden',
-        'from': '2024-12-23',
-        #'category': 'politics',
-        'language': 'en',
-        'sortBy': 'publishedAt',
-        'sources': 'abc-news, bbc-news, bloomberg, cbs-news, cnn, fox-news, the-guardian-uk, the-new-york-times, the-wall-street-journal, the-washington-post ',
-        'apiKey': '0aa3b7bdcc1a48539459855d93e33115',
-        'page': 1,
-        'pageSize': 60
-
-
-    }
-
-    response = requests.get(url, params=params)
-
     #articles = Article.objects.all()
-    articles = {"title": "bdfjbf", "source":"jjjjjj"}
-    #serializer = ArticleSerializer(articles ,many=True)
-    #return Response(serializer.data)
-    return Response(response.json())
+    #articles.delete()
+
+    updateArticles()
+
+    articles = Article.objects.all()
+    #articles = {"article_title": "bdfjbf", "source":"jjjjjj"}
+    serializer = ArticleSerializer(articles ,many=True)
+    return Response(serializer.data)
+    #return Response(updateArticles())
 
 @api_view(['POST'])
 def createData(request):
