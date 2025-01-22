@@ -9,7 +9,7 @@ def using_gemini(message):
     response = model.generate_content(
         f"I am going to give you an article title. Based on that classify it as one "
         f"of the following and map your answer to one of the integers given. DO NOT SAY AN OPTION UNLESS IT IS STATED HERE (only say the classification as an integer nothing else): "
-        f"Pro-Democrat: 1, Pro-Republican: 2, Anti-Democrat: 3, Anti-Republican: 4, Neutral: 5"
+        f"Democrat: 1, Republican: 2, Not Political: 3"
         f"Title: {message}"
         )
     #use the conten section for more accuarcty 
@@ -47,9 +47,10 @@ def updateArticles():
                 posted_at = article['publishedAt'],
                 url = article['url'],
                 shownToUser = False,
+                description = article['description']
 
             )
-            print(using_gemini(article['title']))
+            #print(using_gemini(article['title']))
             item.save()
         
  

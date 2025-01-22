@@ -17,22 +17,48 @@ from .models import Article
 @api_view(['GET'])
 def getData(request):
 
-    #articles = Article.objects.all()
-    #articles.delete()
+    articles = Article.objects.all()
+    articles.delete()
+
+    #print('here in endpt')
 
     updateArticles()
 
     articles = Article.objects.all()
     #articles = {"article_title": "bdfjbf", "source":"jjjjjj"}
     serializer = ArticleSerializer(articles ,many=True)
+    #print(serializer.data)
     return Response(serializer.data)
     #return Response(updateArticles())
 
 @api_view(['POST'])
-def createData(request):
+def sendData(request):
     serializer = ArticleSerializer(data=request.data)
+    affiliation = request.data.get('affiliation')
+    print(affiliation)
+
+    if affiliation == "Democratic":
+        affNum = "1\\n"
+    else:
+        affNum = "2\\n"
+    print(affNum)
+    #print(Article.objects.values_list('political_affiliation', flat=True).distinct())
+    #print(Article.objects.values_list('political_affiliation'))
+
+    #resArticles = Article.objects.filter(political_affiliation__contains=affNum)
+    #resArticles = Article.objects.filter(political_affiliation__contains=affNum)
+    resArticles = Article.objects.filter(political_affiliation__startswith=affNum[0])
+
+    #print(resArticles)
+    filteredSerializer = ArticleSerializer(resArticles, many=True)
+
+    res = {
+        'filteredArticles': filteredSerializer.data
+    }
+    #print(res)
+
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(res, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status = status.HTTP_400_BAD_REQUEST)
 

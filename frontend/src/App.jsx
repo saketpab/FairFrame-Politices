@@ -7,7 +7,8 @@ import HomePage from './routes/HomePage'
 import ArticlesPage from './routes/ArticlesPage'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  
 
   return (
     <>
