@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'articles.apps.ArticlesConfig',#api is name of the file, app is the fiel name, and ApiConfig is like a function in the file
-    'rest_framework'
+    'rest_framework',
+    'corsheaders',
+    
 ]
 
 MIDDLEWARE = [
@@ -49,6 +51,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',  # Add your React frontend URL
 ]
 
 ROOT_URLCONF = 'fairframe.urls'
